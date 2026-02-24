@@ -6,9 +6,7 @@ import {
   Clock,
   HandHeart,
   Home,
-  Mail,
   Menu,
-  Phone,
   X,
 } from "lucide-react";
 import Image from "next/image";
@@ -302,28 +300,6 @@ export function Navbar() {
 
           {/* Sidebar Content */}
           <div className="flex-1 overflow-y-auto">
-            <div className="p-4 bg-amber-50 dark:bg-amber-950/30 border-b">
-              <div className="space-y-2 text-xs md:text-sm px-4">
-                <div className="flex items-center">
-                  <Phone className="h-4 w-4 mr-3 text-amber-600 shrink-0" />
-                  <span className="truncate">Darurat: 021-1234-5678</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Mail className="h-4 w-4 mr-3 text-amber-600 shrink-0" />
-                  <span className="truncate">info@rsgrhapermataibu.com</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Clock className="h-4 w-4 mr-3 text-amber-600 shrink-0" />
-                  <span className="text-xs">
-                    UGD 24 Jam | Pelayanan: 08:00-20:00
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation */}
             <div className="p-4 space-y-2 pb-10">
               {navItems.map((item) => {
                 const isParentActive =
