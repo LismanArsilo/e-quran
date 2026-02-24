@@ -36,8 +36,8 @@ export default async function ImsakiyahList({ searchParams }) {
 
   if (!provinsi || !kabkota) {
     return (
-      <div className="text-center py-16 bg-white/50 rounded-2xl border-2 border-dashed border-emerald-200">
-        <Calendar className="w-16 h-16 text-emerald-300 mx-auto mb-4" />
+      <div className="text-center py-16 bg-white/50 rounded-2xl border-2 border-dashed border-amber-200 dark:bg-slate-900/90">
+        <Calendar className="w-16 h-16 text-amber-300 mx-auto mb-4" />
         <p className="text-slate-500 text-lg">
           Silakan pilih provinsi dan kabupaten/kota terlebih dahulu
         </p>
@@ -58,25 +58,33 @@ export default async function ImsakiyahList({ searchParams }) {
   const { hijriah, masehi, imsakiyah, ...other } = schedule.data;
   const lokasi = `${kabkota}, ${provinsi}`;
 
+  //create date object from masehi string and format it to "D MMMM YYYY" and transform month example 1,2,3 to date start 19-02-2026
+  const ramadanStart = new Date(`${masehi}-02-19`);
+  const today = new Date();
+
+  const diffTime = today - ramadanStart;
+  const ramadanToday = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
   return (
     <div className="space-y-6">
-      {/* Location Info */}
-      <div className="bg-white rounded-xl shadow-md p-6 border border-emerald-100">
+      <div className="bg-white rounded-xl shadow-md p-6 border border-amber-100 dark:bg-slate-900">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-1 h-8 bg-linear-to-b from-emerald-400 to-teal-400 rounded-full" />
-          <h2 className="text-xl font-semibold text-slate-800">{lokasi}</h2>
+          <div className="w-1 h-8 bg-linear-to-b from-amber-400 to-amber-600 rounded-full" />
+          <h2 className="text-xl font-semibold text-foreground">{lokasi}</h2>
         </div>
         <p className="text-slate-600 text-sm flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-emerald-500" />
-          Ramadan {hijriah} H / {masehi} M
+          <Calendar className="w-4 h-4 text-amber-500" />
+          <span className="text-foreground">
+            Ramadan {hijriah} H / {masehi} M
+          </span>
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-md border border-slate-100 overflow-x-auto">
+      <div className="bg-background rounded-xl shadow-md border border-slate-100 overflow-x-auto">
         <Table>
           <TableHeader>
-            <TableRow className="bg-emerald-50">
-              <TableHead className="w-20">Tanggal</TableHead>
+            <TableRow className="bg-amber-700">
+              <TableHead className="w-20">No</TableHead>
               <TableHead>Imsak</TableHead>
               <TableHead>Subuh</TableHead>
               <TableHead>Terbit</TableHead>
@@ -92,9 +100,13 @@ export default async function ImsakiyahList({ searchParams }) {
             {imsakiyah.map((day, index) => (
               <TableRow
                 key={day.tanggal}
-                className="hover:bg-emerald-50/50 transition-colors"
+                className={`hover:bg-amber-900/90 transition-colors ${
+                  Number(day.tanggal) === ramadanToday
+                    ? "bg-amber-600/70 font-semibold"
+                    : ""
+                }`}
               >
-                <TableCell className="font-medium">{day.tanggal}</TableCell>
+                <TableCell className="dark:text-white">{day.tanggal}</TableCell>
                 <TableCell>{day.imsak}</TableCell>
                 <TableCell>{day.subuh}</TableCell>
                 <TableCell>{day.terbit}</TableCell>

@@ -24,6 +24,12 @@ async function getProvinces() {
   }
 }
 
+export const metadata = {
+  title: "Jadwal Imsakiyah",
+  description:
+    "Lihat jadwal imsakiyah untuk berbagai kota di Indonesia dengan mudah dan cepat.",
+};
+
 export default async function ImsakiyahPage({ searchParams }) {
   const provincesData = await getProvinces();
   const provinces = provincesData.data || [];
@@ -34,15 +40,12 @@ export default async function ImsakiyahPage({ searchParams }) {
         <ImsakiyahHero />
 
         {/* Selector Component */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-amber-100">
+        <div className=" backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 mb-8 border border-amber-100 bg-background">
           <ImsakiyahSelector provinces={provinces} />
         </div>
 
         {/* Schedule Display */}
-        <Suspense
-          key={JSON.stringify(searchParams)}
-          fallback={<LoadingSkeleton />}
-        >
+        <Suspense fallback={<LoadingSkeleton />}>
           <ImsakiyahList searchParams={searchParams} />
         </Suspense>
       </div>

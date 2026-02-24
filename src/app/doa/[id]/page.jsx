@@ -23,7 +23,6 @@ export default async function DoaDetailPage({ params }) {
   const { id } = await params;
 
   const doa = await getDoaDetail(id);
-  console.info("Doa Detail:", doa);
 
   if (!doa) {
     return (

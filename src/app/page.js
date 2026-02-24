@@ -18,6 +18,28 @@ const dailyHadith = {
   narrator: "Abu Umamah Al-Bahili",
 };
 
+export const metadata = {
+  title: {
+    default: "E-Quran | Al-Qur'an Digital Modern",
+    template: "E-Quran | %s",
+  },
+  description:
+    "Aplikasi E-Quran modern untuk membaca Al-Qur'an lengkap dengan tafsir dan jadwal ibadah.",
+  keywords: [
+    "E-Quran",
+    "Al-Quran Digital",
+    "Surah",
+    "Tafsir",
+    "Jadwal Imsakiyah",
+  ],
+  authors: [{ name: "E-Quran App" }],
+  openGraph: {
+    title: "E-Quran – Al-Qur'an Digital Modern",
+    description: "Baca Al-Qur'an lengkap dengan tampilan modern dan nyaman.",
+    type: "website",
+  },
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">

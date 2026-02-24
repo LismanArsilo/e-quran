@@ -21,6 +21,12 @@ async function getDoa({ grup = "", tag = "" }) {
   return res.json();
 }
 
+export const metadata = {
+  title: "Kumpulan Doa",
+  description:
+    "Temukan berbagai doa lengkap dengan teks Arab, terjemahan, dan penjelasan singkatnya.",
+};
+
 export default async function DoaPage({ searchParams }) {
   const params = await searchParams;
   const grup = params.grup || "";

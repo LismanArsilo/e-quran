@@ -17,6 +17,12 @@ async function getSurah() {
   return data.data;
 }
 
+export const metadata = {
+  title: "Daftar Surah",
+  description:
+    "Jelajahi daftar lengkap surah dalam Al-Qur'an dengan informasi detail dan tafsirnya.",
+};
+
 export default async function SurahPage() {
   const surahs = await getSurah();
 

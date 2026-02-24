@@ -6,7 +6,6 @@ import {
   Clock,
   HandHeart,
   Home,
-  Info,
   Mail,
   Menu,
   Phone,
@@ -42,33 +41,6 @@ const navItems = [
     icon: Clock,
     type: "link",
     href: "/imsakiyah",
-  },
-  {
-    title: "Informasi",
-    icon: Info,
-    type: "dropdown",
-    items: [
-      {
-        title: "Promo",
-        href: "/promo",
-        description: "Informasi promo dan penawaran spesial",
-      },
-      {
-        title: "Artikel",
-        href: "/artikel",
-        description: "Artikel kesehatan dan informasi terbaru",
-      },
-      {
-        title: "Rekanan",
-        href: "/rekanan",
-        description: "Mitra dan rekanan Rumah Sakit",
-      },
-      {
-        title: "Karir",
-        href: "/karir",
-        description: "Lowongan pekerjaan dan karir",
-      },
-    ],
   },
 ];
 

@@ -1,5 +1,6 @@
 "use client";
 
+import ZoomIn from "@/components/motions/ZoomIn";
 import {
   Select,
   SelectContent,
@@ -7,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, MapPin } from "lucide-react";
+import { CalendarClock, Loader2, MapPin, RefreshCcw } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -82,13 +83,20 @@ export default function ImsakiyahSelector({ provinces }) {
     }
   };
 
+  const handleReset = () => {
+    setSelectedProvince("");
+    setSelectedCity("");
+    setError("");
+    router.replace("/imsakiyah");
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-4">
+      <ZoomIn className="grid md:grid-cols-2 gap-4">
         {/* ================= PROVINSI ================= */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-emerald-500" />
+          <label className="text-sm font-medium text-foreground flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-amber-500" />
             Provinsi
           </label>
 
@@ -123,8 +131,8 @@ export default function ImsakiyahSelector({ provinces }) {
 
         {/* ================= KABUPATEN ================= */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-700 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-emerald-500" />
+          <label className="text-sm font-medium text-foreground flex items-center gap-2">
+            <MapPin className="w-4 h-4 text-amber-500" />
             Kabupaten / Kota
           </label>
 
@@ -166,23 +174,43 @@ export default function ImsakiyahSelector({ provinces }) {
 
           {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
         </div>
-      </div>
+      </ZoomIn>
 
       {/* ================= BUTTON ================= */}
-      <button
-        type="submit"
-        disabled={!selectedProvince || !selectedCity || loadingCities}
-        className="w-full md:w-auto px-8 py-3 bg-linear-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2"
-      >
-        {loadingCities ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin" />
-            Memuat...
-          </>
-        ) : (
-          "Lihat Jadwal Imsakiyah"
-        )}
-      </button>
+      <ZoomIn delay={0.5} className="flex flex-col sm:flex-row gap-3">
+        <button
+          type="submit"
+          disabled={!selectedProvince || !selectedCity || loadingCities}
+          className={`flex-1 px-6 py-2 font-medium rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2
+      ${
+        !selectedProvince || !selectedCity || loadingCities
+          ? "bg-gray-300 text-gray-500 cursor-not-allowed shadow-none"
+          : "bg-linear-to-r from-yellow-500 to-amber-500 text-white hover:from-yellow-600 hover:to-amber-600 hover:shadow-xl hover:-translate-y-0.5 hover:cursor-pointer"
+      }
+    `}
+        >
+          {loadingCities ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              <span>Memuat...</span>
+            </>
+          ) : (
+            <>
+              <span>Lihat Jadwal Imsakiyah</span>
+              <CalendarClock className="w-4 h-4" />
+            </>
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={handleReset}
+          className="px-4 py-2 bg-white border-2 border-slate-200 text-slate-600 font-medium rounded-xl hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-2 shadow-sm hover:shadow-md hover:cursor-pointer"
+        >
+          <RefreshCcw className="w-4 h-4" />
+          <span className="text-sm">Reset</span>
+        </button>
+      </ZoomIn>
     </form>
   );
 }

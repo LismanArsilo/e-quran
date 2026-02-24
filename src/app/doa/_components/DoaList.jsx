@@ -56,12 +56,10 @@ export default async function DoaList({ grup = "", tag = "" }) {
               {doa.nama}
             </h2>
 
-            {/* Arabic Text */}
             <p className="text-lg text-right font-arabic text-slate-700 dark:text-slate-300 leading-loose line-clamp-2 mb-3">
               {doa.ar}
             </p>
 
-            {/* Description */}
             <p
               className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3"
               dangerouslySetInnerHTML={{ __html: doa.tentang }}
