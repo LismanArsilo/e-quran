@@ -1,14 +1,7 @@
 import FadeUp from "@/components/motions/FadeUp";
 import ZoomIn from "@/components/motions/ZoomIn";
-import {
-  BookOpenCheck,
-  Calendar,
-  ChevronRight,
-  Clock,
-  Compass,
-} from "lucide-react";
+import { BookOpenCheck, Calendar, ChevronRight, Clock } from "lucide-react";
 import Link from "next/link";
-import CardFeatSection from "./_components/CardFeatSection";
 import CardInfoSection from "./_components/CardInfoSection";
 import HeroSection from "./_components/HeroSection";
 
@@ -58,7 +51,7 @@ export default function Home() {
 
         <CardInfoSection />
 
-        <FadeUp className="mb-12 md:mb-16">
+        {/* <FadeUp className="mb-12 md:mb-16">
           <div className="flex flex-col gap-2 mb-6">
             <div className="flex items-center gap-2 mb-6">
               <Compass className="w-5 h-5 text-amber-600" />
@@ -68,7 +61,7 @@ export default function Home() {
             </div>
             <CardFeatSection />
           </div>
-        </FadeUp>
+        </FadeUp> */}
 
         <FadeUp className="relative overflow-hidden bg-linear-to-r from-amber-600 via-amber-500 to-teal-500 rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-xl">
           <div
