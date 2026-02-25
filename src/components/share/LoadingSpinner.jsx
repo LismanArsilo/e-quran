@@ -17,13 +17,11 @@ export default function LoadingSpinner({
         ${className}
       `}
     >
-      {/* Spinner */}
       <Loader2
         className="animate-spin text-primary"
         style={{ width: size, height: size }}
       />
 
-      {/* Optional Text */}
       {text && (
         <p className="text-sm text-muted-foreground animate-pulse">{text}</p>
       )}

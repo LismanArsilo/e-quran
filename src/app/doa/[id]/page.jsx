@@ -52,7 +52,10 @@ export default async function DoaDetailPage({ params }) {
 
         <div className="flex justify-between items-center mb-8">
           <FadeRight>
-            <Link href={`/doa/${prevId}`}>
+            <Link
+              href={`/doa/${prevId}`}
+              className={`${prevId < 1 ? "pointer-events-none opacity-50" : ""}`}
+            >
               <Button
                 variant="outline"
                 size="sm"
