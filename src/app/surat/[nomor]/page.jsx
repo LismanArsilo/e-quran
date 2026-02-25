@@ -1,3 +1,5 @@
+import FadeUp from "@/components/motions/FadeUp";
+import ZoomIn from "@/components/motions/ZoomIn";
 import ScrollToTopButton from "@/components/share/ScrollToTopButton";
 import {
   ChevronLeft,
@@ -71,7 +73,7 @@ export default async function SurahDetailPage({ params }) {
           {/* Content - Detail Surah */}
           <main className="md:col-span-4 space-y-4">
             {/* Header Surah */}
-            <div className="bg-linear-to-br from-white to-amber-50/30 dark:from-slate-900 dark:to-amber-950/20 border border-amber-100/50 dark:border-amber-900/30 rounded-xl p-6 shadow-sm">
+            <ZoomIn className="bg-linear-to-br from-white to-amber-50/30 dark:from-slate-900 dark:to-amber-950/20 border border-amber-100/50 dark:border-amber-900/30 rounded-xl p-6 shadow-sm">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2 mb-2">
@@ -120,7 +122,7 @@ export default async function SurahDetailPage({ params }) {
                   />
                 )}
               </div>
-            </div>
+            </ZoomIn>
 
             {/* Navigasi Surah */}
             <div className="flex items-center justify-between gap-3">
@@ -163,7 +165,7 @@ export default async function SurahDetailPage({ params }) {
             </div>
 
             {/* Daftar Ayat */}
-            <div className="space-y-3">
+            <FadeUp className="space-y-3">
               {surah.ayat.map((ayat, index) => (
                 <div
                   key={ayat.nomorAyat}
@@ -211,7 +213,7 @@ export default async function SurahDetailPage({ params }) {
                   )}
                 </div>
               ))}
-            </div>
+            </FadeUp>
 
             {/* Footer Navigasi */}
             <div className="flex items-center justify-between pt-4">

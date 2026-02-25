@@ -1,6 +1,5 @@
 import StaggerFadeUp from "@/components/motions/StaggerFadeUp";
 import StaggerFadeUpItem from "@/components/motions/StaggerFadeUpItem";
-import React from "react";
 
 export default function SurahInfoCard({ surahs }) {
   // Stats
